@@ -7,12 +7,17 @@ public class EnemyPath : MonoBehaviour
     [SerializeField] private float speed;
     private int point = 0;
     [SerializeField] private Transform[] WayPoints;
-    
+
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         transform.position = WayPoints[point].transform.position;
+        transform.LookAt(WayPoints[point].position);
     }
 
     // Update is called once per frame
@@ -24,7 +29,9 @@ public class EnemyPath : MonoBehaviour
 
     private void Move()
     {
-      transform.position = Vector3.MoveTowards(transform.position,WayPoints[point].transform.position, speed * Time.deltaTime); 
+       
+        transform.position = Vector3.MoveTowards(transform.position,WayPoints[point].transform.position, speed * Time.deltaTime);
+        transform.LookAt(WayPoints[point].position);
 
         if (transform.position == WayPoints[point].position)
         {
@@ -33,7 +40,8 @@ public class EnemyPath : MonoBehaviour
 
         if (point == WayPoints.Length)
         {
-            point = 0;
+            
+            Destroy(gameObject);
         }
         
     }
