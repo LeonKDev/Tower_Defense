@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyPath : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    private float speed = 4;
     private int point = 0;
-    [SerializeField] private Transform[] WayPoints;
-
+    public Transform[] WayPoints;
+   
 
     // Start is called before the first frame update
     private void Awake()
@@ -16,6 +16,8 @@ public class EnemyPath : MonoBehaviour
     }
     void Start()
     {
+        
+        
         transform.position = WayPoints[point].transform.position;
         transform.LookAt(WayPoints[point].position);
     }
