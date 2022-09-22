@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWaypoints : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
+    public float speed;
+    private int life = 3;
+    public int damage;
+
     // Start is called before the first frame update
     void Start()
     {
