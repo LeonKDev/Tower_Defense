@@ -4,20 +4,41 @@ using UnityEngine;
 
 public class EnemyWaveSystem : MonoBehaviour
 {
-    public GameObject enemy;
-    public GameObject TransformHolder;
-    public GameObject[] waypoints;
-    // Start is called before the first frame update
-    void Start()
+    public Transform[] WayPoints;
+    public GameObject EnemyPrefab;
+
+    public Transform SpawnPoint;
+
+    public float TimeInterval = 5f;
+    public float countdown = 2f;
+
+    private int WaveIndex = 0;
+    private void Update()
     {
-        
-        
-        
+       
+        if (countdown <= 0f)
+        {
+            StartCoroutine(SpawnWave());
+            countdown = TimeInterval;
+        }
+
+        countdown -= Time.deltaTime;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    IEnumerator SpawnWave()
     {
-        
+        WaveIndex++;
+        for (int i = 0; i < WaveIndex; i++)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+    void SpawnEnemy()
+    {
+        GameObject obj = Instantiate(EnemyPrefab, SpawnPoint.position, Quaternion.identity);
+        obj.GetComponent<EnemyPath>().WayPoints = WayPoints;
+
     }
 }
