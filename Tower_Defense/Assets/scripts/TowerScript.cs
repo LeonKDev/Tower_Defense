@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
-    public Transform target;
     public float range = 1f;
+    public float fireRate = 1f;
+    private float fireCountdown = 0f;
+    private float turnSpeed = 10f;
 
     public string EnemyTag = "Enemy";
-
+    public Transform target;
     public Transform partToRotate;
-    private float turnSpeed = 10f;
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+
+    
+
+    
 
 
 
@@ -32,6 +39,19 @@ public class TowerScript : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime;
+    }
+
+    void Shoot()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
 
     void UpdateTarget ()
