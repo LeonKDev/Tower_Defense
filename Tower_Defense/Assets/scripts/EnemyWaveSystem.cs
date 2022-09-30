@@ -9,20 +9,29 @@ public class EnemyWaveSystem : MonoBehaviour
 
     public Transform SpawnPoint;
 
-    public float TimeInterval = 5f;
-    public float countdown = 2f;
+    
+    public bool StartWave;
+    public bool ClearedWave;
 
     private int WaveIndex = 0;
+    //private bool start;
+
+    private void Start()
+    {
+        StartWave = false;
+        InvokeRepeating("checkEnemys", 0f, 0.5f);
+    }
     private void Update()
     {
        
-        if (countdown <= 0f)
+        if (StartWave && ClearedWave) 
         {
             StartCoroutine(SpawnWave());
-            countdown = TimeInterval;
+            StartWave = false;
+            ClearedWave = false;
         }
 
-        countdown -= Time.deltaTime;
+        
     }
 
 
@@ -32,8 +41,13 @@ public class EnemyWaveSystem : MonoBehaviour
         for (int i = 0; i < WaveIndex; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
         }
+    }
+
+    public void OnButtonClick()
+    {
+        StartWave = true;
     }
     void SpawnEnemy()
     {
@@ -41,4 +55,15 @@ public class EnemyWaveSystem : MonoBehaviour
         obj.GetComponent<EnemyPath>().WayPoints = WayPoints;
 
     }
+
+    void checkEnemys()
+    {
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 )
+        {
+            ClearedWave = true;
+        }
+    }
+    
+    
+
 }
