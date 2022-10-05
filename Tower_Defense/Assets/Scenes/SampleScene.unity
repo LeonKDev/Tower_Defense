@@ -977,7 +977,9 @@ MonoBehaviour:
   - {fileID: 1256797457}
   - {fileID: 219244213}
   - {fileID: 1651559031}
-  EnemyPrefab: {fileID: 5110344483449739459, guid: 96e46c9ca4ee63e4a947b72f228d9c61, type: 3}
+  EnemyPrefab:
+  - {fileID: 4034322063580750893, guid: 99f9d0be1004161499e46756477383a4, type: 3}
+  - {fileID: 5110344483449739459, guid: 96e46c9ca4ee63e4a947b72f228d9c61, type: 3}
   SpawnPoint: {fileID: 778707676}
   StartWave: 0
   ClearedWave: 0

@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyWaveSystem : MonoBehaviour
 {
     public Transform[] WayPoints;
-    public GameObject EnemyPrefab;
+    public GameObject[] EnemyPrefab;
+   
 
     public Transform SpawnPoint;
 
@@ -51,7 +52,7 @@ public class EnemyWaveSystem : MonoBehaviour
     }
     void SpawnEnemy()
     {
-        GameObject obj = Instantiate(EnemyPrefab, SpawnPoint.position, Quaternion.identity);
+        GameObject obj = Instantiate(EnemyPrefab[Random.Range(0, EnemyPrefab.Length)], SpawnPoint.position, Quaternion.identity);
         obj.GetComponent<EnemyPath>().WayPoints = WayPoints;
 
     }
