@@ -4,5 +4,5 @@
  graph TD
     A[Start Game] -->|Click Start Wave| B(Spawn Wave)
     B --> C{Shoot Enemy}
-    C -->|Enemies dead| D[You win]
+    C -->|Enemies dead| A
     C -->|Enemies alive| E[You dead]
