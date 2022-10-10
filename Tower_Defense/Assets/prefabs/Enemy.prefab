@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5110344483449739456}
   - component: {fileID: 5110344483449739457}
   - component: {fileID: 3916148200902839265}
-  - component: {fileID: -2995592903031458041}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -113,23 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446d54cf6fcb1f2468412582c831c7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 5110344483449739459}
-  WayPoints: []
---- !u!114 &-2995592903031458041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5110344483449739459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 429bbc9eebdbc3d49ad86780233561b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  TowerHealthText: {fileID: 0}
   speed: 5
-  Health: 5
+  Health: 4
   Damage: 2
+  TowerHealth: 15
+  WayPoints: []
 --- !u!1 &7966787378261944685
 GameObject:
   m_ObjectHideFlags: 0

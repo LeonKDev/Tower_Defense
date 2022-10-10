@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8119410007089316351}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: partToRotate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8119410007141473032}
   - component: {fileID: 8119410007141473033}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0ce4691d5f2e1409f89c3497f38439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 9.12
-  fireRate: 1
+  range: 3
+  fireRate: 3
   EnemyTag: Enemy
   target: {fileID: 0}
   partToRotate: {fileID: 8119410007089316351}
@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8119410007867961615}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: bulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 8119410008207904441}
   - component: {fileID: 8119410008207904440}
   - component: {fileID: 8119410008207904391}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8119410008215890329}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 8119410008238568228}
   - component: {fileID: 8119410008238568231}
   - component: {fileID: 8119410008238568230}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 8119410008654599849}
   - component: {fileID: 8119410008654599848}
   - component: {fileID: 8119410008654599863}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

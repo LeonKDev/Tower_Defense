@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyWaveSystem : MonoBehaviour
 {
+    public TextMeshProUGUI enemyCounter;
+    private int enemyCount;
+
     public Transform[] WayPoints;
     public GameObject[] EnemyPrefab;
    
@@ -19,8 +23,10 @@ public class EnemyWaveSystem : MonoBehaviour
 
     private void Start()
     {
+        
         StartWave = false;
-        InvokeRepeating("checkEnemys", 0f, 0.5f);
+        InvokeRepeating("CheckEnemys", 0f, 0.2f);
+        InvokeRepeating("EnemyCounter", 0f, 0.2f);
     }
     private void Update()
     {
@@ -53,16 +59,22 @@ public class EnemyWaveSystem : MonoBehaviour
     void SpawnEnemy()
     {
         GameObject obj = Instantiate(EnemyPrefab[Random.Range(0, EnemyPrefab.Length)], SpawnPoint.position, Quaternion.identity);
-        obj.GetComponent<EnemyPath>().WayPoints = WayPoints;
+        obj.GetComponent<EnemyBehaviour>().WayPoints = WayPoints;
 
     }
 
-    void checkEnemys()
+    void CheckEnemys()
     {
         if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 )
         {
             ClearedWave = true;
         }
+    }
+
+    void EnemyCounter()
+    {
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        enemyCounter.text = $"enemys remaining {enemyCount}";
     }
     
     

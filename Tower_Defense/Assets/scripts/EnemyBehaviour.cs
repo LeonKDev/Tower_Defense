@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class EnemyPath : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
-    EnemyStats enemyStats;
-    public GameObject Enemy;
-    // private float speed;
+    public float speed;
+    public float Health;
+
     private int point = 0;
     public Transform[] WayPoints;
    
@@ -18,7 +19,7 @@ public class EnemyPath : MonoBehaviour
     }
     void Start()
     {
-        enemyStats = Enemy.GetComponent<EnemyStats>();
+        
         
         transform.position = WayPoints[point].transform.position;
         transform.LookAt(WayPoints[point].position);
@@ -27,14 +28,13 @@ public class EnemyPath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(); 
-
+        Move();
     }
 
     private void Move()
     {
        
-        transform.position = Vector3.MoveTowards(transform.position,WayPoints[point].transform.position, enemyStats.speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position,WayPoints[point].transform.position, speed * Time.deltaTime);
         transform.LookAt(WayPoints[point].position);
 
         if (transform.position == WayPoints[point].position)
@@ -44,10 +44,10 @@ public class EnemyPath : MonoBehaviour
 
         if (point == WayPoints.Length)
         {
-            
+
             Destroy(gameObject);
-        }
-        
+
+        }  
     }
 }
 
