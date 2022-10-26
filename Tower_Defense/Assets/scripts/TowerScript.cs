@@ -15,6 +15,8 @@ public class TowerScript : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
 
+    //public bool placed;
+
     
 
     
@@ -40,7 +42,7 @@ public class TowerScript : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-        if (fireCountdown <= 0f)
+        if (fireCountdown <= 0f /*&& placed == true*/)
         {
             Shoot();
             fireCountdown = 1f / fireRate;

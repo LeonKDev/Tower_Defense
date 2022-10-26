@@ -74,7 +74,7 @@ public class EnemyWaveSystem : MonoBehaviour
     void EnemyCounter()
     {
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        enemyCounter.text = $"enemys remaining {enemyCount}";
+        enemyCounter.text = $"{enemyCount}";
     }
     
     

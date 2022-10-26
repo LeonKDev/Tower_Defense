@@ -2,25 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnemyBehaviour : MonoBehaviour
 {
     public float speed;
     public float Health;
+    public float startHealth = 100;
 
     private int point = 0;
     public Transform[] WayPoints;
-   
 
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        
-    }
+    endPoint endpointScript;
+    public Image fill;
+   
     void Start()
     {
-        
-        
+        Health = startHealth;
+
+        endpointScript = FindObjectOfType<endPoint>();
         transform.position = WayPoints[point].transform.position;
         transform.LookAt(WayPoints[point].position);
     }
@@ -44,9 +44,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (point == WayPoints.Length)
         {
-
+            endpointScript.health -= 1;
             Destroy(gameObject);
-
         }  
     }
 }

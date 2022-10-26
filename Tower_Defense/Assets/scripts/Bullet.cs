@@ -10,6 +10,13 @@ public class Bullet : MonoBehaviour
     public float Damage;
     public float speed;
 
+    public int addAmount;
+    currency currencyScript;
+
+    public void Start()
+    {
+        currencyScript = FindObjectOfType<currency>();
+    }
     public void seek(Transform _Target)
     {
         target = _Target;
@@ -38,13 +45,15 @@ public class Bullet : MonoBehaviour
     }
     void HitTarget()
     {
+        target.GetComponent<EnemyBehaviour>().Health -= Damage;
+        target.GetComponent<EnemyBehaviour>().fill.fillAmount = target.GetComponent<EnemyBehaviour>().Health / target.GetComponent<EnemyBehaviour>().startHealth;
         GameObject effectIns = (GameObject) Instantiate(ImpactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 1f);
         Destroy(gameObject);
-        target.GetComponent<EnemyBehaviour>().Health -= Damage;
-        if (target.GetComponent<EnemyBehaviour>().Health == 0)
+        if (target.GetComponent<EnemyBehaviour>().Health <= 0)
         {
             Destroy(target.gameObject);
+            currencyScript.gold += addAmount;
         }
     }
 }
