@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class endPoint : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class endPoint : MonoBehaviour
 
     private void Update()
     {
+        if (health == 0)
+        {
+            SceneManager.LoadScene("EndScreen");
+        }
         RemaingHealth();
     }
   
@@ -17,4 +22,6 @@ public class endPoint : MonoBehaviour
     {
         towerHealth.text = $"{health}";
     }
+
+
 }
