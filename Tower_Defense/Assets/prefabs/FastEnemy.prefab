@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446d54cf6fcb1f2468412582c831c7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7.5
   Health: 80
   startHealth: 80
   WayPoints: []
