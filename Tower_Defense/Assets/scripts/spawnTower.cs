@@ -27,6 +27,14 @@ public class spawnTower : MonoBehaviour
     public void OnButtonClick(int towertype)
     {
         TowerType = towertype;
+        if (towertype == 0)
+        {
+            SubAmount = 100;
+        }
+        else if (towertype == 1)
+        {
+            SubAmount = 150;
+        }
         
         if (towerPrefab[towertype] == towerPrefab[0] && currencyScript.gold >= SubAmount)
         {
@@ -47,7 +55,7 @@ public class spawnTower : MonoBehaviour
             Bought = true;
         }
 
-        if (towerPrefab[towertype] == towerPrefab[1] && currencyScript.gold >= SubAmount1)
+        if (towerPrefab[towertype] == towerPrefab[1] && currencyScript.gold >= SubAmount)
         {
             
             Tower = Instantiate(towerPrefab[towertype]);
@@ -85,6 +93,7 @@ public class spawnTower : MonoBehaviour
         {
             if (Physics.Raycast(ray, out hit) && !hit.collider.gameObject.CompareTag("Placeable"))
             {
+                currencyScript.gold += SubAmount;
                 Destroy(Tower);
             }
             else
@@ -116,7 +125,7 @@ public class spawnTower : MonoBehaviour
         {
             Tower.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.color = color;
             Tower.transform.GetChild(1).GetComponent<MeshRenderer>().material.color = color;
-            Tower.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.color = color;
+            //Tower.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.color = color;
         }
     }
 }
