@@ -18,7 +18,7 @@ public class EnemyWaveSystem : MonoBehaviour
     public bool StartWave;
     public bool ClearedWave;
 
-    private int WaveIndex = 0;
+    public int WaveIndex = 0;
     //private bool start;
 
     private void Start()
